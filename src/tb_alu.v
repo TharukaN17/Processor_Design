@@ -1,6 +1,6 @@
 `timescale 1 ns / 1 ps
 
-module tb_alu;
+module tb_alu();
         reg [7:0] in1,in2;
         reg [2:0] sel;
 
