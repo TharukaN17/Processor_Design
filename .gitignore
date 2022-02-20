@@ -1,1 +1,7 @@
-Processor/
+EDR_Processor/Processor/
+Pipelined_Processor/pipelined.cache/
+Pipelined_Processor/pipelined.hw/
+Pipelined_Processor/pipelined.ip_user_files/
+Pipelined_Processor/pipelined.sim/
+Pipelined_Processor/synthesis/
+Pipelined_Processor/pipelined.xpr
