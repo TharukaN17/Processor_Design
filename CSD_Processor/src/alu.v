@@ -1,26 +1,23 @@
 module alu (
-    input [7:0] in1, in2,
-    input [2:0] sel,
-    output reg [7:0] out,
-    output reg Z
+    input clk,
+    input [15:0] in1, in2,
+    input [2:0] alu_op,
+    output reg [15:0] alu_out,
+    output reg [15:0] z
 );
 
-always @(in1 or in2 or sel)
+always @(posedge clk)
 begin
-    case(sel)
-        3'b000: out = in1 + in2;
-        3'b010: out = in1 - in2;
-        3'b011: out = in1 & in2;
-        3'b100: out = in1 | in2;
-        3'b101: out = in1 ^ in2;
-        3'b110: out = in1 << in2;
-        3'b111: out = in1 >> in2;
-        default: out = in1 + in2;
+    case(alu_op)
+        3'd1: alu_out <= in1 + in2;
+        3'd2: alu_out <= in1 - in2;
+        3'd3: alu_out <= in1 << in2;
+        3'd4: alu_out = in1 >> in2;
     endcase
 
-    if (out == 0)
-        Z = 1;
+    if (alu_out == 0)
+        z <= 1;
     else
-        Z = 0;
+        z <= 0;
 end
 endmodule

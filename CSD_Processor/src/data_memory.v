@@ -1,7 +1,6 @@
 module data_memory (
     input clk, write_en,
-    input [15:0] address,
-    input [7:0] data_in,
+    input [15:0] addr, data_in,
     output reg [7:0] data_out
     );
 
@@ -9,8 +8,8 @@ module data_memory (
 
     always @(posedge clk) begin
         if (write_en == 1)
-            ram[address] <= data_in;
+            ram[addr] <= data_in;
         else
-            data_out <= ram[address];
+            data_out <= ram[addr];
     end
 endmodule
