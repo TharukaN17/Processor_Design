@@ -1,5 +1,5 @@
 module control(
-    input clock,
+    input clk,
     input [15:0] z, instruction,
     input [1:0] status,
     output reg [2:0] alu_op,
@@ -24,7 +24,7 @@ module control(
     movacr3 = 6'd8,
     movacr4 = 6'd9,
     movacr5 = 6'd10,
-    moveacdar = 6'd11,
+    movacdar = 6'd11,
     movrac = 6'd12,
     movr1ac = 6'd13,
     movr2ac = 6'd14,
@@ -47,8 +47,8 @@ module control(
     incdar = 6'd29,
     incr1 = 6'd30,
     incr2 = 6'd31,
-    incr3v = 6'd32,
-    loadimv1 = 6'd33,
+    incr3 = 6'd32,
+    loadim1 = 6'd33,
     loadim2 = 6'd34,
     loadimx = 6'd45,
     jumpz1 = 6'd35,
@@ -66,10 +66,10 @@ module control(
     stac2 = 6'd43,
     idle = 6'd0;
     
-    always @(posedge clock)
+    always @(posedge clk)
         present <= next;
     
-    always @(posedge clock) begin
+    always @(posedge clk) begin
         if (present == endop)
         end_process <= 1'd1;
         else
@@ -169,7 +169,7 @@ module control(
             next <= fetch1;
         end
 
-        movecr3: begin
+        movacr3: begin
             read_en <= 4'd5;
             write_en <= 16'b0000001000000000 ;
             inc_en <= 16'b0000000000000010 ;

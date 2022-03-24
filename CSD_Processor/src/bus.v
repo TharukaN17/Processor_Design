@@ -1,4 +1,5 @@
 module bus(
+    input clk,
     input [3:0] read_en,
     input [15:0] r1,r2,r3,r4,r5,r,dar,ir,pc,ac,im,
     input [7:0] dm,
