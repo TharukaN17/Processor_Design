@@ -7,9 +7,9 @@ module ac(
     always @(posedge clk) begin
         if (inc_en == 1)
             data_out <= data_out + 16'd1;
-        if (write_en ==1)
+        else if (write_en == 1)
             data_out <= data_in;
-        if (alu_to_ac == 1)
+        else if (alu_to_ac == 1)
             data_out <= alu_out;
     end
 endmodule

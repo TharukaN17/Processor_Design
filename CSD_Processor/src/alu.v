@@ -11,7 +11,7 @@ begin
         3'd1: alu_out <= in1 + in2;
         3'd2: alu_out <= in1 - in2;
         3'd3: alu_out <= in1 << in2;
-        3'd4: alu_out = in1 >> in2;
+        3'd4: alu_out <= in1 >> in2;
     endcase
 
     if (alu_out == 0)
