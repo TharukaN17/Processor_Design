@@ -54,21 +54,15 @@
 
     regr ir(.clk(clk), .write_en (write_en[4]),.data_in(bus_out),.data_out(ir_out));
 
-    bus
- 
-    bus1(.r1(regr1_out ),.r2(regr2_out ),.r3(regr3_out ),.r4(regr4_out ),.r5(regr5_out ),.r(regr_out ),.dar(dar_out),.ir(ir_out),.pc(pc_out),.ac(ac_out),.dm(dm_out),.im(im_out),.bus_out(bus_out),.read_en(read_en),.clk(clk));
+    bus bus1(.r1(regr1_out ),.r2(regr2_out ),.r3(regr3_out ),.r4(regr4_out ),.r5(regr5_out ),.r(regr_out ),.dar(dar_out),.ir(ir_out),.pc(pc_out),.ac(ac_out),.dm(dm_out),.im(im_out),.bus_out(bus_out),.read_en(read_en),.clk(clk));
 
     ac ac1(.clk(clk), .write_en (write_en[5]),.data_in(bus_out),.data_out(ac_out),.alu_out(alu_out),.alu_to_ac (write_en [14]),.inc_en(inc_en[2]));
 
     regrinc pc(.clk(clk), .write_en (write_en[1]),.data_in(bus_out),.data_out(pc_out),.inc_en(inc_en[1]));
 
-    alu
+    alu alu1(.clk(clk),.in1(regr_out ),.in2(ac_out),.alu_op(alu_op),.alu_out(alu_out),.z(z));
 
-    alu1(.clk(clk),.in1(regr_out ),.in2(ac_out),.alu_op(alu_op),.alu_out(alu_out),.z(z));
-
-    control
-
-    control1 (.clk(clk),.z(z),.instruction (ir_out),.alu_op(alu_op),.write_en (write_en ),.read_en(read_en),.inc_en(inc_en),.end_process (end_process ),.status(status));
+    control control1 (.clk(clk),.z(z),.instruction (ir_out),.alu_op(alu_op),.write_en (write_en ),.read_en(read_en),.inc_en(inc_en),.end_process (end_process ),.status(status));
 
     always @ (posedge clk)
         if (status == 2'b01)begin
