@@ -78,6 +78,7 @@
             dar_out <= data_addr_in;
         end
         else if (status == 2'b11) begin
+            dm_en <= 1'b0;
             dar_out <= data_addr_in;
         end
 endmodule

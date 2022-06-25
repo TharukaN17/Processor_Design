@@ -176,7 +176,7 @@ module instr_memory(
     ram[134] = movacr2;
     ram[135] = jump;
     ram[136] = 8'd9;
-    ram[137] = endop; 
+    ram[137] = nop; 
     ram[138] = loadim;
     ram[139] = 8'd0;
     ram[140] = movacr1; 
