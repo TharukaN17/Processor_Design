@@ -39,12 +39,13 @@ module tb_cpu();
         end
         #100
         status = 2'b11;
-        for (i=0;i<64*64;i=i+1) begin
+        for (i=0;i<127*127;i=i+1) begin
             addr = i;
-            #100
-            $fwrite(f, "%d\n", out);
+            #200
+            $fwrite(f, "%u\n", out);
         end
         #100
+        status = 2'b00;
         $fclose(f);
     end 
 endmodule
