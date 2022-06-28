@@ -1,7 +1,7 @@
 module ac(
-    input clk, write_en, alu_to_ac,inc_en,
-    input [15:0] data_in, alu_out,
-    output reg [15:0] data_out = 16'd0
+    input               clk, write_en, alu_to_ac,inc_en,
+    input       [15:0]  data_in, alu_out,
+    output reg  [15:0]  data_out = 16'd0
     );
     
     always @(posedge clk) begin

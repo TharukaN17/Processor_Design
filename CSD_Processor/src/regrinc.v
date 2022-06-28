@@ -1,6 +1,6 @@
 module regrinc (
-    input clk, write_en, inc_en,
-    input [15:0] data_in,
+    input             clk, write_en, inc_en,
+    input      [15:0] data_in,
     output reg [15:0] data_out = 16'd0
     );
     

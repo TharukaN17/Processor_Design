@@ -1,8 +1,8 @@
 module alu (
-    input clk,
-    input [15:0] in1, in2,
-    input [2:0] alu_op,
-    output reg [15:0] alu_out, z
+    input               clk,
+    input       [15:0]  in1, in2,
+    input       [2:0]   alu_op,
+    output reg  [15:0]  alu_out, z
 );
 
 always @(posedge clk)

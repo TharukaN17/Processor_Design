@@ -1,42 +1,42 @@
 module instr_memory(
-    input clk, write_en,
-    input [15:0] addr, instr_in,
+    input             clk, write_en,
+    input      [15:0] addr, instr_in,
     output reg [15:0] instr_out
     );
     
     reg [15:0] ram [190:0];
     
-    parameter ldac = 8'd3;
-    parameter movacr = 8'd5;
-    parameter movacr1 = 8'd6;
-    parameter movacr2 = 8'd7;
-    parameter movacr3 = 8'd8;
-    parameter movacr4 = 8'd9;
-    parameter movacr5 = 8'd10;
-    parameter movacdar = 8'd11;
-    parameter movrac = 8'd12;
-    parameter movr1ac = 8'd13;
-    parameter movr2ac = 8'd14;
-    parameter movr3ac = 8'd15;
-    parameter movr4ac = 8'd16;
-    parameter movr5ac = 8'd17;
-    parameter movdarac = 8'd18;
-    parameter stac = 8'd19;
-    parameter add = 8'd20;
-    parameter sub = 8'd22;
-    parameter lshift = 8'd24;
-    parameter rshift = 8'd26;
-    parameter incac = 8'd28;
-    parameter incdar = 8'd29;
-    parameter incr1 = 8'd30;
-    parameter incr2 = 8'd31;
-    parameter incr3 = 8'd32;
-    parameter loadim = 8'd33;
-    parameter jumpz = 8'd35;
-    parameter jumpnz = 8'd39;
-    parameter jump = 8'd40;
-    parameter nop = 8'd41;
-    parameter endop = 8'd42;
+    parameter loadac    = 8'd4;
+    parameter movacr    = 8'd8;
+    parameter movacr1   = 8'd9;
+    parameter movacr2   = 8'd10;
+    parameter movacr3   = 8'd11;
+    parameter movacr4   = 8'd12;
+    parameter movacr5   = 8'd13;
+    parameter movacdar  = 8'd14;
+    parameter movrac    = 8'd15;
+    parameter movr1ac   = 8'd16;
+    parameter movr2ac   = 8'd17;
+    parameter movr3ac   = 8'd18;
+    parameter movr4ac   = 8'd19;
+    parameter movr5ac   = 8'd20;
+    parameter movdarac  = 8'd21;
+    parameter stac      = 8'd22;
+    parameter add       = 8'd25;
+    parameter sub       = 8'd27;
+    parameter lshift    = 8'd29;
+    parameter rshift    = 8'd31;
+    parameter incac     = 8'd33;
+    parameter incdar    = 8'd34;
+    parameter incr1     = 8'd35;
+    parameter incr2     = 8'd36;
+    parameter incr3     = 8'd37;
+    parameter loadim    = 8'd38;
+    parameter jumpz     = 8'd41;
+    parameter jumpnz    = 8'd48;
+    parameter jump      = 8'd49;
+    parameter nop       = 8'd50;
+    parameter endop     = 8'd51;
     
     initial begin
     ram[0] = loadim;
@@ -49,7 +49,7 @@ module instr_memory(
     ram[7] = nop;
     ram[8] = nop; 
     ram[9] = movr1ac;
-    ram[10] = ldac;
+    ram[10] = loadac;
     ram[11] = movacr;
     ram[12] = loadim;
     ram[13] = 8'd4;
@@ -60,11 +60,11 @@ module instr_memory(
     ram[18] = movacr;
     ram[19] = movr1ac;
     ram[20] = add;
-    ram[21] = ldac;
+    ram[21] = loadac;
     ram[22] = movacr5; 
     ram[23] = movr1ac;
     ram[24] = sub ;
-    ram[25] = ldac;
+    ram[25] = loadac;
     ram[26] = movacr;
     ram[27] = movr5ac;
     ram[28] = add;
@@ -74,7 +74,7 @@ module instr_memory(
     ram[32] = movacr;
     ram[33] = movr1ac;
     ram[34] = add;
-    ram[35] = ldac;
+    ram[35] = loadac;
     ram[36] = movacr;
     ram[37] = movr5ac;
     ram[38] = add;
@@ -84,7 +84,7 @@ module instr_memory(
     ram[42] = movacr;
     ram[43] = movr1ac;
     ram[44] = sub;
-    ram[45] = ldac;
+    ram[45] = loadac;
     ram[46] = movacr;
     ram[47] = movr5ac;
     ram[48] = add;
@@ -105,11 +105,11 @@ module instr_memory(
     ram[63] = movacr;
     ram[64] = movr1ac;
     ram[65] = add;
-    ram[66] = ldac;
+    ram[66] = loadac;
     ram[67] = movacr5;
     ram[68] = movr1ac;
     ram[69] = sub;
-    ram[70] = ldac;
+    ram[70] = loadac;
     ram[71] = movacr;
     ram[72] = movr5ac;
     ram[73] = add;
@@ -119,7 +119,7 @@ module instr_memory(
     ram[77] = movacr;
     ram[78] = movr1ac;
     ram[79] = add;
-    ram[80] = ldac;
+    ram[80] = loadac;
     ram[81] = movacr;
     ram[82] = movr5ac;
     ram[83] = add;
@@ -129,7 +129,7 @@ module instr_memory(
     ram[87] = movacr;
     ram[88] = movr1ac;
     ram[89] = sub;
-    ram[90] = ldac;
+    ram[90] = loadac;
     ram[91] = movacr;
     ram[92] = movr5ac;
     ram[93] = add;
@@ -183,7 +183,7 @@ module instr_memory(
     ram[141] = movacr2;
     ram[142] = movacr3; 
     ram[143] = movr1ac; 
-    ram[144] = ldac;
+    ram[144] = loadac;
     ram[145] = movacr4;
     ram[146] = movr3ac;
     ram[147] = movacdar ;
@@ -230,7 +230,7 @@ module instr_memory(
 
     always @(posedge clk) begin
         if (write_en == 1)
-            ram[addr] <= instr_in [7:0];
+            ram[addr] <= instr_in;
         else
             instr_out <= ram[addr];
         end

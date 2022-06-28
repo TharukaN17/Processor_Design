@@ -1,18 +1,18 @@
 `timescale 1 ns / 1 ps
-//34152256
-module tb_cpu();
-	reg clk;
-	reg [1:0] status;
+
+module tb_machine();
+	reg        clk;
+	reg [1:0]  status;
 	reg [15:0] addr;
-	reg [7:0] data;
+	reg [7:0]  data;
 	
-	wire end_process;
+	wire       end_process;
 	wire [7:0] out;
 	
-	integer f;
-	reg [7:0] read_data [0:65535];
+	integer    f;
+	reg [7:0]  read_data [0:65535];
 	
-	cpu dut(clk, status, data, addr, end_process, out);
+	machine dut(clk, status, data, addr, end_process, out);
 	
 	initial begin
         clk = 0;
