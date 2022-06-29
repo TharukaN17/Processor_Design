@@ -28,7 +28,7 @@
 
     wire [15:0] write_en ;
     wire [3:0]  read_en;
-    wire [7:0] inc_en;
+    wire [7:0]  inc_en;
 
     wire [15:0] z;
     
@@ -52,11 +52,10 @@
     regr    ir       (.clk(clk), .write_en (write_en[3]),.data_in(bus_wire),.data_out(ir_out));
 
     bus     bus1     (.r1(regr1_out ),.r2(regr2_out ),.r3(regr3_out ),.r4(regr4_out ),.r5(regr5_out ),.r(regr_out ),
-                      .dar(dar_out),.ir(ir_out),.pc(pc_out),.ac(ac_out),.dm(dm_out),.im(im_out),.bus_out(bus_wire),
-                      .read_en(read_en),.clk(clk));
+                      .dar(dar_out),.ac(ac_out),.dm(dm_out),.im(im_out),.bus_out(bus_wire),.read_en(read_en),.clk(clk));
 
     ac      ac1      (.clk(clk), .write_en (write_en[4]),.data_in(bus_wire),.data_out(ac_out),.alu_out(alu_out),
-                      .alu_to_ac (write_en [13]),.inc_en(inc_en[2]));
+                      .alu_to_ac (write_en[13]),.inc_en(inc_en[2]));
 
     regrinc pc       (.clk(clk), .write_en (write_en[1]),.data_in(bus_wire),.data_out(pc_out),.inc_en(inc_en[1]));
 

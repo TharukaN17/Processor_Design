@@ -90,7 +90,7 @@ module control(
         end
 
         fetch1: begin
-            read_en  <= 4'd13;
+            read_en  <= 4'd10;
             write_en <= 16'b0000000000001000 ;
             inc_en   <= 8'b00000000 ;
             alu_op   <= 3'd0;
@@ -98,7 +98,7 @@ module control(
         end
 
         fetch2: begin
-            read_en  <= 4'd13;
+            read_en  <= 4'd10;
             write_en <= 16'b0000000000001000 ;
             inc_en   <= 8'b00000000 ;
             alu_op   <= 3'd0;
@@ -106,7 +106,7 @@ module control(
         end
 
         fetch3: begin
-            read_en  <= 4'd13;
+            read_en  <= 4'd10;
             write_en <= 16'b0000000000000000 ;
             inc_en   <= 8'b00000000 ;
             alu_op   <= 3'd0;
@@ -114,7 +114,7 @@ module control(
         end
 
         loadac1: begin 
-            read_en  <= 4'd5;
+            read_en  <= 4'd2;
             write_en <= 16'b0000000000000100 ;
             inc_en   <= 8'b00000000 ;
             alu_op   <= 3'd0;
@@ -122,7 +122,7 @@ module control(
         end
 
         loadac2 : begin 
-            read_en  <= 4'd5;
+            read_en  <= 4'd2;
             write_en <= 16'b0000000000000100 ;
             inc_en   <= 8'b00000000 ;
             alu_op   <= 3'd0;
@@ -130,7 +130,7 @@ module control(
         end
 
         loadac3 : begin
-            read_en  <= 4'd12;
+            read_en  <= 4'd9;
             write_en <= 16'b0000000000010000 ; 
             inc_en   <= 8'b00000000 ;
             alu_op   <= 3'd0;
@@ -138,7 +138,7 @@ module control(
         end
 
         loadac4: begin
-            read_en  <= 4'd12;
+            read_en  <= 4'd9;
             write_en <= 16'b0000000000010000 ; 
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -146,7 +146,7 @@ module control(
         end
 
         movacr: begin
-            read_en  <= 4'd5;
+            read_en  <= 4'd2;
             write_en <= 16'b0000000000100000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -154,7 +154,7 @@ module control(
         end
 
         movacr1: begin
-            read_en  <= 4'd5;
+            read_en  <= 4'd2;
             write_en <= 16'b0000000001000000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -162,7 +162,7 @@ module control(
         end
 
         movacr2: begin
-            read_en  <= 4'd5;
+            read_en  <= 4'd2;
             write_en <= 16'b0000000010000000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -170,7 +170,7 @@ module control(
         end
 
         movacr3: begin
-            read_en  <= 4'd5;
+            read_en  <= 4'd2;
             write_en <= 16'b0000000100000000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -178,7 +178,7 @@ module control(
         end
 
         movacr4: begin
-            read_en  <= 4'd5;
+            read_en  <= 4'd2;
             write_en <= 16'b0000001000000000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -186,7 +186,7 @@ module control(
         end
 
         movacr5: begin
-            read_en  <= 4'd5;
+            read_en  <= 4'd2;
             write_en <= 16'b0000010000000000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -194,7 +194,7 @@ module control(
          end
 
          movacdar : begin
-            read_en  <= 4'd5;
+            read_en  <= 4'd2;
             write_en <= 16'b0000000000000100 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -202,7 +202,7 @@ module control(
          end
 
          movrac: begin
-            read_en  <= 4'd6;
+            read_en  <= 4'd3;
             write_en <= 16'b0000000000010000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -210,7 +210,7 @@ module control(
          end
 
          movr1ac: begin
-            read_en  <= 4'd7;
+            read_en  <= 4'd4;
             write_en <= 16'b0000000000010000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -218,7 +218,7 @@ module control(
          end
 
          movr2ac: begin
-            read_en  <= 4'd8;
+            read_en  <= 4'd5;
             write_en <= 16'b0000000000010000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -226,7 +226,7 @@ module control(
          end
 
          movr3ac: begin
-            read_en  <= 4'd9;
+            read_en  <= 4'd6;
             write_en <= 16'b0000000000010000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -234,7 +234,7 @@ module control(
          end
 
          movr4ac: begin
-            read_en  <= 4'd10;
+            read_en  <= 4'd7;
             write_en <= 16'b0000000000010000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -242,7 +242,7 @@ module control(
          end
 
          movr5ac: begin
-            read_en  <= 4'd11;
+            read_en  <= 4'd8;
             write_en <= 16'b0000000000010000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -250,7 +250,7 @@ module control(
          end
 
          movdarac : begin
-            read_en  <= 4'd2;
+            read_en  <= 4'd1;
             write_en <= 16'b0000000000010000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -258,7 +258,7 @@ module control(
          end
 
          stac1: begin
-            read_en  <= 4'd5;
+            read_en  <= 4'd2;
             write_en <= 16'b0000000000000000 ;
             inc_en   <= 8'b00000000 ;
             alu_op   <= 3'd0;
@@ -266,7 +266,7 @@ module control(
          end
 
          stac2: begin
-            read_en  <= 4'd5;
+            read_en  <= 4'd2;
             write_en <= 16'b0000100000000000 ;
             inc_en   <= 8'b00000000 ;
             alu_op   <= 3'd0;
@@ -274,7 +274,7 @@ module control(
          end
 
          stac3: begin
-            read_en  <= 4'd5;
+            read_en  <= 4'd2;
             write_en <= 16'b0000000000000000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -394,7 +394,7 @@ module control(
          end
 
          loadim2: begin
-            read_en  <= 4'd13;
+            read_en  <= 4'd10;
             write_en <= 16'b0000000000000000 ;
             inc_en   <= 8'b00000000 ;
             alu_op   <= 3'd0;
@@ -402,7 +402,7 @@ module control(
          end
 
          loadim3: begin
-            read_en  <= 4'd13;
+            read_en  <= 4'd10;
             write_en <= 16'b0000000000010000 ;
             inc_en   <= 8'b00000010 ;
             alu_op   <= 3'd0;
@@ -440,7 +440,7 @@ module control(
          end
 
          jumpz2: begin
-            read_en  <= 4'd13;
+            read_en  <= 4'd10;
             write_en <= 16'b0000000000000010 ;
             inc_en   <= 8'b00000000 ;
             alu_op   <= 3'd0;
@@ -448,7 +448,7 @@ module control(
          end
 
          jumpz3: begin
-            read_en  <= 4'd13;
+            read_en  <= 4'd10;
             write_en <= 16'b0000000000000010 ;
             inc_en   <= 8'b00000000 ;
             alu_op   <= 3'd0;
@@ -456,7 +456,7 @@ module control(
          end
 
          jumpz4: begin
-            read_en  <= 4'd13;
+            read_en  <= 4'd10;
             write_en <= 16'b0000000000001000 ;
             inc_en   <= 8'b00000000 ;
             alu_op   <= 3'd0;
@@ -464,7 +464,7 @@ module control(
          end
 
          jumpz5: begin
-            read_en  <= 4'd13;
+            read_en  <= 4'd10;
             write_en <= 16'b0000000000001000 ;
             inc_en   <= 8'b00000000 ;
             alu_op   <= 3'd0;
@@ -496,7 +496,7 @@ module control(
         end
 
         endop: begin
-            read_en  <= 4'd12;
+            read_en  <= 4'd9;
             write_en <= 16'b0000000000000000 ;
             inc_en   <= 8'b00000000 ;
             alu_op   <= 3'd0;
