@@ -1,6 +1,6 @@
 module control(
-    input             clk,
-    input      [15:0] z, instruction,
+    input             clk, z,
+    input      [15:0] instruction,
     input      [1:0]  status,
     output reg [2:0]  alu_op,
     output reg [7:0]  inc_en,
@@ -79,10 +79,10 @@ module control(
     always @(present or z or instruction or status)
     case(present)
         idle: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             if (status == 2'b01)
                 next <= fetch1;
             else
@@ -90,338 +90,338 @@ module control(
         end
 
         fetch1: begin
-            read_en  <= 4'd10;
-            write_en <= 16'b0000000000001000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd10;
+            write_en <= 16'b0000000000001000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             next     <= fetch2;
         end
 
         fetch2: begin
-            read_en  <= 4'd10;
-            write_en <= 16'b0000000000001000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd10;
+            write_en <= 16'b0000000000001000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             next     <= fetch3;
         end
 
         fetch3: begin
-            read_en  <= 4'd10;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd10;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             next     <= instruction [5:0];
         end
 
         loadac1: begin 
-            read_en  <= 4'd2;
-            write_en <= 16'b0000000000000100 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
-            next     <= loadac2 ;
+            read_en  <=  4'd2;
+            write_en <= 16'b0000000000000100;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
+            next     <= loadac2;
         end
 
         loadac2 : begin 
-            read_en  <= 4'd2;
-            write_en <= 16'b0000000000000100 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
-            next     <= loadac3 ;
+            read_en  <=  4'd2;
+            write_en <= 16'b0000000000000100;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
+            next     <= loadac3;
         end
 
         loadac3 : begin
-            read_en  <= 4'd9;
-            write_en <= 16'b0000000000010000 ; 
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd9;
+            write_en <= 16'b0000000000010000; 
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             next     <= loadac4;
         end
 
         loadac4: begin
-            read_en  <= 4'd9;
-            write_en <= 16'b0000000000010000 ; 
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd9;
+            write_en <= 16'b0000000000010000; 
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
         end
 
         movacr: begin
-            read_en  <= 4'd2;
-            write_en <= 16'b0000000000100000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd2;
+            write_en <= 16'b0000000000100000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
         end
 
         movacr1: begin
-            read_en  <= 4'd2;
-            write_en <= 16'b0000000001000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd2;
+            write_en <= 16'b0000000001000000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
         end
 
         movacr2: begin
-            read_en  <= 4'd2;
-            write_en <= 16'b0000000010000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd2;
+            write_en <= 16'b0000000010000000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
         end
 
         movacr3: begin
-            read_en  <= 4'd2;
-            write_en <= 16'b0000000100000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd2;
+            write_en <= 16'b0000000100000000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
         end
 
         movacr4: begin
-            read_en  <= 4'd2;
-            write_en <= 16'b0000001000000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd2;
+            write_en <= 16'b0000001000000000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
         end
 
         movacr5: begin
-            read_en  <= 4'd2;
-            write_en <= 16'b0000010000000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd2;
+            write_en <= 16'b0000010000000000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          movacdar : begin
-            read_en  <= 4'd2;
-            write_en <= 16'b0000000000000100 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd2;
+            write_en <= 16'b0000000000000100;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          movrac: begin
-            read_en  <= 4'd3;
-            write_en <= 16'b0000000000010000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd3;
+            write_en <= 16'b0000000000010000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          movr1ac: begin
-            read_en  <= 4'd4;
-            write_en <= 16'b0000000000010000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd4;
+            write_en <= 16'b0000000000010000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          movr2ac: begin
-            read_en  <= 4'd5;
-            write_en <= 16'b0000000000010000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd5;
+            write_en <= 16'b0000000000010000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          movr3ac: begin
-            read_en  <= 4'd6;
-            write_en <= 16'b0000000000010000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd6;
+            write_en <= 16'b0000000000010000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          movr4ac: begin
-            read_en  <= 4'd7;
-            write_en <= 16'b0000000000010000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd7;
+            write_en <= 16'b0000000000010000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          movr5ac: begin
-            read_en  <= 4'd8;
-            write_en <= 16'b0000000000010000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd8;
+            write_en <= 16'b0000000000010000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          movdarac : begin
-            read_en  <= 4'd1;
-            write_en <= 16'b0000000000010000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd1;
+            write_en <= 16'b0000000000010000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          stac1: begin
-            read_en  <= 4'd2;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd2;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             next     <= stac2;
          end
 
          stac2: begin
-            read_en  <= 4'd2;
-            write_en <= 16'b0000100000000000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd2;
+            write_en <= 16'b0000100000000000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             next     <= stac3;
          end
 
          stac3: begin
-            read_en  <= 4'd2;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd2;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          add1: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd1;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd1;
             next     <= add2;
          end
 
          add2: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0010000000000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd1;
+            read_en  <=  4'd0;
+            write_en <= 16'b0010000000000000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd1;
             next     <= fetch1;
          end
 
          sub1: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd2;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd2;
             next     <= sub2;
          end
 
          sub2: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0010000000000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd2;
+            read_en  <=  4'd0;
+            write_en <= 16'b0010000000000000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd2;
             next     <= fetch1;
          end
 
          lshift1: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd3;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd3;
             next     <= lshift2;
          end
 
          lshift2: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0010000000000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd3;
+            read_en  <=  4'd0;
+            write_en <= 16'b0010000000000000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd3;
             next     <= fetch1;
          end
 
          rshift1: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd4;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd4;
             next     <= rshift2;
          end
 
          rshift2: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0010000000000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd4;
+            read_en  <=  4'd0;
+            write_en <= 16'b0010000000000000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd4;
             next     <= fetch1;
          end
 
          incac: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000110 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000110;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
             
          incdar: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00001010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00001010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          incr1: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00010010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00010010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          incr2: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00100010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00100010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          incr3: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b01000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b01000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          loadim1: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= loadim2;
          end
 
          loadim2: begin
-            read_en  <= 4'd10;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd10;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             next     <= loadim3;
          end
 
          loadim3: begin
-            read_en  <= 4'd10;
-            write_en <= 16'b0000000000010000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd10;
+            write_en <= 16'b0000000000010000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
          end
 
          jump: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= jumpz2;
          end
             
          jumpz1: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             if (z == 1)
                 next <= jumpz2;
             else
@@ -429,85 +429,85 @@ module control(
          end
 
          jumpnz1: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op <= 3'd0;
-            if (z == 0 )
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000010;
+            alu_op <=  3'd0;
+            if (z == 0)
                 next <= jumpz3;
             else
                 next <= jumpz7;
          end
 
          jumpz2: begin
-            read_en  <= 4'd10;
-            write_en <= 16'b0000000000000010 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd10;
+            write_en <= 16'b0000000000000010;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             next     <= jumpz3;
          end
 
          jumpz3: begin
-            read_en  <= 4'd10;
-            write_en <= 16'b0000000000000010 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd10;
+            write_en <= 16'b0000000000000010;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             next     <= jumpz4;
          end
 
          jumpz4: begin
-            read_en  <= 4'd10;
-            write_en <= 16'b0000000000001000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd10;
+            write_en <= 16'b0000000000001000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             next     <= jumpz5;
          end
 
          jumpz5: begin
-            read_en  <= 4'd10;
-            write_en <= 16'b0000000000001000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd10;
+            write_en <= 16'b0000000000001000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             next     <= fetch3;
          end
 
          jumpz6: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             next     <= jumpz7;
          end
             
          jumpz7: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en  <= 16'b00000010 ;
-            alu_op  <= 3'd0;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en  <= 16'b00000010;
+            alu_op  <=  3'd0;
             next    <= jumpz4;
         end
 
         nop: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000010 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000010;
+            alu_op   <=  3'd0;
             next     <= fetch1;
         end
 
         endop: begin
-            read_en  <= 4'd9;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd9;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             next     <= endop;
         end
 
         default: begin
-            read_en  <= 4'd0;
-            write_en <= 16'b0000000000000000 ;
-            inc_en   <= 8'b00000000 ;
-            alu_op   <= 3'd0;
+            read_en  <=  4'd0;
+            write_en <= 16'b0000000000000000;
+            inc_en   <=  8'b00000000;
+            alu_op   <=  3'd0;
             next     <= fetch1;
         end        
     endcase
