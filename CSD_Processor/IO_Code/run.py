@@ -29,7 +29,7 @@ while True:
     bottomLeft      =   np.uint16(image[currentPixel+255])
     topRight        =   np.uint16(image[currentPixel-255])
     storeLoc        =   currentPixel-257
-    image[storeLoc] =   np.uint8(middle*16/32 + (right+left+bottom+top)*3/32 + (bottomLeft+bottomRight+topLeft+topRight)/32)
+    image[storeLoc] =   np.uint8((middle*4 + (right+left+bottom+top)*2 + (bottomLeft+bottomRight+topLeft+topRight))/16)
 
     if currentPixel ==  totalPixels:
         break
