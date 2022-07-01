@@ -33,19 +33,15 @@ module tb_machine();
             #100;
         end
         status = 2'b01;
-        #100;
         while (end_process != 1'b1) begin
             #100;
         end
-        #100
         status = 2'b11;
         for (i=0;i<127*127;i=i+1) begin
             addr = i;
             #200
             $fwrite(f, "%u\n", out);
         end
-        #100
-        status = 2'b00;
         $fclose(f);
     end 
 endmodule
