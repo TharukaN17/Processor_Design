@@ -32,8 +32,8 @@ compDict = {
     "endop"     : 51
 }
 
-instructionArray = open("input.txt").read().splitlines()
-outputFile = open("output.txt", "w")
+instructionArray = open("Assembly.txt").read().splitlines()
+outputFile = open("output_bin.txt", "w")
 lines = []
 comment = "//"
 
@@ -49,7 +49,7 @@ for i, instruction in enumerate(instructionArray):
 
     if instruction in compDict:
         binaryValue = bin(compDict[instruction])[2:]
-        length = 16
+        length = 8
     else:
         val = instruction.split("'d")
         binaryValue = bin(int(val[1]))[2:]

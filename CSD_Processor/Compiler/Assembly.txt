@@ -115,7 +115,7 @@ jumpz
 incr1
 incr2
 jump
-8'd4
+8'd3
 incr1
 incr1
 incr1
