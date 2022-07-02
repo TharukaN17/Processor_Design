@@ -37,7 +37,7 @@ module tb_machine();
             #100;
         end
         status = 2'b11;
-        for (i=0;i<127*127;i=i+1) begin
+        for (i=0;i<128*128;i=i+1) begin
             addr = i;
             #200
             $fwrite(f, "%u\n", out);

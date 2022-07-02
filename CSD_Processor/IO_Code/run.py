@@ -48,8 +48,8 @@ cv2.waitKey()
 currentPixelLoc = 0
 currentStoreLoc = 0
 currentRowPixel = 0
-totalRowPixels  = 252
-totalPixels     = 64764
+totalRowPixels  = 254
+totalPixels     = 65278
 
 while True:
     image[currentStoreLoc] = image[currentPixelLoc]
@@ -57,14 +57,14 @@ while True:
         break
     elif currentRowPixel == totalRowPixels:
         currentRowPixel = 0
-        currentPixelLoc = currentPixelLoc+260
+        currentPixelLoc = currentPixelLoc+258
         currentStoreLoc = currentStoreLoc+1
     else:
         currentRowPixel = currentRowPixel+2
         currentPixelLoc = currentPixelLoc+2
         currentStoreLoc = currentStoreLoc+1
 
-imageDownsampled = image[:16129].reshape(127, 127)
+imageDownsampled = image[:16384].reshape(128, 128)
 print(imageDownsampled)
 cv2.imshow('Downscaled', imageDownsampled)
 cv2.waitKey()

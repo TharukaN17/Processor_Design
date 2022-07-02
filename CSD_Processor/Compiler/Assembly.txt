@@ -1,5 +1,5 @@
 loadim
-16'd257     // Starting from 257th bit 
+16'd257     // Starting from 257th bit (2nd row, 2nd bit)
 movacr1
 movr1ac     // Start of the filtering loop
 loadac
@@ -99,7 +99,7 @@ movacdar
 movr4ac
 stac
 loadim
-16'd65278   // To check end of the image
+16'd65278   // To check end of the image ((256*254) + (255-1))
 movacr
 movr1ac
 sub
@@ -140,14 +140,14 @@ stac
 movr1ac 
 movacr
 loadim
-16'd64764   // To check end of the image
+16'd65278   // To check end of the image ((256*254) + (255-1))
 sub
 jumpz
 8'd172      // Go to end process
 movr2ac
 movacr
 loadim
-8'd252      // To check end of the row
+8'd254      // To check end of the row
 sub
 jumpz
 8'd160
@@ -162,7 +162,7 @@ loadim
 8'd0
 movacr2
 loadim
-16'd260     // To skip a row
+16'd258     // To skip a row (256 + 2)
 movacr
 movr1ac
 add

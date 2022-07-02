@@ -32,7 +32,7 @@ inputImage.close()
 intList = [int(x, 2) for x in contentList]
 uint8List = [np.uint8(x) for x in intList]
 image = np.array(uint8List)
-imageDownsampled = image.reshape(127, 127)
+imageDownsampled = image.reshape(128, 128)
 print(imageDownsampled)
 cv2.imshow('Downsampled', imageDownsampled)
 cv2.waitKey()

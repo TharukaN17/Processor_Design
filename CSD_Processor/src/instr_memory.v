@@ -181,14 +181,14 @@ module instr_memory(
     ram[139] = movr1ac; 
     ram[140] = movacr;
     ram[141] = loadim;
-    ram[142] = 16'd64764; 
+    ram[142] = 16'd65278; 
     ram[143] = sub;
     ram[144] = jumpz;
     ram[145] = 8'd172;
     ram[146] = movr2ac;
     ram[147] = movacr;
     ram[148] = loadim;
-    ram[149] = 8'd252;
+    ram[149] = 8'd254;
     ram[150] = sub;
     ram[151] = jumpz;
     ram[152] = 8'd160;
@@ -203,7 +203,7 @@ module instr_memory(
     ram[161] = 8'd0;
     ram[162] = movacr2;
     ram[163] = loadim;
-    ram[164] = 16'd260;
+    ram[164] = 16'd258;
     ram[165] = movacr;
     ram[166] = movr1ac;
     ram[167] = add;
