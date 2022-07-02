@@ -30,7 +30,7 @@
     wire [3:0]  read_en;
     wire [7:0]  inc_en;
 
-    wire [15:0] z;
+    wire        z;
     
     regr    reg_r    (.clk(clk), .write_en (write_en[5]),.data_in(bus_wire),.data_out(regr_out ));
 
