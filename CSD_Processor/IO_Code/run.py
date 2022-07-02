@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 
+# Show the original image
 inputImage = open("input.txt", "r")
 content = inputImage.read()
 contentList = content.split("\n")
@@ -9,10 +10,11 @@ intList = [int(x, 2) for x in contentList]
 uint8List = [np.uint8(x) for x in intList]
 image = np.array(uint8List)
 imageIn = image.reshape(256, 256)
-print(imageIn)
+print("Input image:\n", imageIn)
 cv2.imshow('Original', imageIn)
 cv2.waitKey()
 
+# Do the filtering
 currentPixel    = 257
 currentRowPixel = 0
 totalRowPixels  = 253
@@ -40,11 +42,13 @@ while True:
         currentRowPixel  =  currentRowPixel+1
         currentPixel     =  currentPixel+1
 
+# Show the filtered image
 imageFiltered = image.reshape(256, 256)
-print(imageFiltered)
+print("\nFiltered image:\n", imageFiltered)
 cv2.imshow('Filtered', imageFiltered)
 cv2.waitKey()
 
+# Do the downsampling
 currentPixelLoc = 0
 currentStoreLoc = 0
 currentRowPixel = 0
@@ -64,8 +68,25 @@ while True:
         currentPixelLoc = currentPixelLoc+2
         currentStoreLoc = currentStoreLoc+1
 
+# Show the downsampled image
 imageDownsampled = image[:16384].reshape(128, 128)
-print(imageDownsampled)
-cv2.imshow('Downscaled', imageDownsampled)
+print("\nDownsampled image:\n", imageDownsampled)
+cv2.imshow('Downsampled', imageDownsampled)
+cv2.waitKey()
+
+# Get the image downsampled by the processor
+inputImage = open("output_downscaled.txt", "r")
+content = inputImage.read()
+contentList = content.split("\n")
+inputImage.close()
+intList = [int(x, 2) for x in contentList]
+uint8List = [np.uint8(x) for x in intList]
+image = np.array(uint8List)
+imageDownsampledMachine = image.reshape(128, 128)
+
+# Calculate and show the error
+errorArray = imageDownsampled - imageDownsampledMachine
+error = np.count_nonzero(errorArray, axis=None, keepdims=False)
+print("\nError:", error)
 cv2.waitKey()
 cv2.destroyAllWindows()
