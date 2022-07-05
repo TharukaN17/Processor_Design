@@ -21,7 +21,8 @@ module tb_machine();
     
     initial begin
         $readmemb("image.txt", read_data);
-        f = $fopen("output.txt", "w");
+        f = $fopen("output_downscaled.txt", "w");
+//        f = $fopen("output_filtered.txt", "w");
         status = 2'b10;
     end
     
@@ -38,6 +39,7 @@ module tb_machine();
         end
         status = 2'b11;
         for (i=0;i<128*128;i=i+1) begin
+//        for (i=0;i<256*256;i=i+1) begin
             addr = i;
             #200
             $fwrite(f, "%u\n", out);

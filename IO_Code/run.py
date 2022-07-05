@@ -79,7 +79,7 @@ inputImage = open("output_downscaled.txt", "r")
 content = inputImage.read()
 contentList = content.split("\n")
 inputImage.close()
-intList = [int(x, 2) for x in contentList]
+intList = [int(x, 2) for x in contentList[:-1]]
 uint8List = [np.uint8(x) for x in intList]
 image = np.array(uint8List)
 imageDownsampledMachine = image.reshape(128, 128)

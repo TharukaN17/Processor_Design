@@ -19,7 +19,7 @@ inputImage = open("output_filtered.txt", "r")
 content = inputImage.read()
 contentList = content.split("\n")
 inputImage.close()
-intList = [int(x, 2) for x in contentList]
+intList = [int(x, 2) for x in contentList[:-1]]
 uint8List = [np.uint8(x) for x in intList]
 image = np.array(uint8List)
 imageFiltered = image.reshape(256, 256)
@@ -32,7 +32,7 @@ inputImage = open("output_downscaled.txt", "r")
 content = inputImage.read()
 contentList = content.split("\n")
 inputImage.close()
-intList = [int(x, 2) for x in contentList]
+intList = [int(x, 2) for x in contentList[:-1]]
 uint8List = [np.uint8(x) for x in intList]
 image = np.array(uint8List)
 imageDownsampled = image.reshape(128, 128)

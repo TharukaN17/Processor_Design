@@ -114,6 +114,7 @@ module instr_memory(
 	ram[104] = 8'd27;
 	ram[105] = 8'd41;
 	ram[106] = 8'd127;
+//	ram[106] = 8'd126;
 	ram[107] = 8'd38;
 	ram[108] = 8'd253;
 	ram[109] = 8'd8;
